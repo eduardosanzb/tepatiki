@@ -1,0 +1,38 @@
+{
+    "users":{
+        "user_id_01":{
+            "name":false,
+            "pSurname":false,
+            "mSurname":false,
+            "birthdate":false,
+            "state":false,
+            "city":false,
+            "locality":false,
+            "curp":false,
+            "logs":{
+                "log_id":true
+            }
+        }  
+    },
+
+
+    "logs":{
+        "log_id":{
+            "user_id":true,
+            "height":false,
+            "pulse":false,
+            "temperature":false,
+            "hearthBeat":false,
+            "weights":false
+        }
+    },
+
+    "weights":{
+        "log_weight_id":{
+            "value":false,
+            "user_id":true
+        }
+    }
+
+
+}
