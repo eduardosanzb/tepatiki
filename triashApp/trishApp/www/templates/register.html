@@ -1,0 +1,49 @@
+<ion-view view-title="Title">
+  <ion-header-bar class="bar bar-header bar-positive">
+  <h1 class="title">Registro</h1>
+  <div class="buttons">
+    <button class="button button-clear" ui-sref="home">Cancelar</button>
+  </div>
+  </ion-header-bar>
+<ion-content>
+<div class="list">
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Nombre</span>
+    <input type="text" placeholder="Nombre" ng-model="user.name">
+  </label>
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Apellido Paterno</span>
+    <input type="text" placeholder="Apellido Paterno" ng-model="user.pSurname">
+  </label>
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Apellido Materno</span>
+    <input type="text" placeholder="Apellido Materno" ng-model="user.mSurname">
+  </label>
+  <label class="item item-input item-floating-label">
+    <span class="input-label">CURP</span>
+    <input type="text" placeholder="CURP" ng-model="user.curp">
+  </label>
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Direccion</span>
+    <input type="text" placeholder="Direccion" ng-model="user.adress">
+  </label>
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Telefono</span>
+    <input type="tel" placeholder="Telefono" ng-model="user.tel">
+  </label>
+  
+
+  <a class="item" ng-click="openDatePicker()">Fecha de Nacimiento {{showDate}}</a>
+
+
+  <label class="item item-input  item-stacked-label" ng-click="statesModal.show()">
+                    <span class="input-label">Estado {{user.state}}</span>
+  </label>
+  <label class="item item-input  item-stacked-label" ng-click="municipiosModal.show()" ng-class="{'disabled':!flag}">
+                    <span class="input-label">Municipios   {{user.municipio}}</span>
+  </label>
+
+  <div class="button button-assertive" ng-disabled="!user.municipio" ng-click="saveUser()">Guardar Usuario</div>
+</div>
+</ion-content>
+</ion-view>

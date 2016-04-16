@@ -1,0 +1,25 @@
+<ion-view view-title="Home">
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Login</h1>
+  </ion-header-bar>
+
+  <ion-content>
+  
+  <div class="list">
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Ingresa tu CURP</span>
+    <input type="text" placeholder="Ingresa tu CURP" ng-model="user.curp">
+  </label>
+  
+
+  <div class="button button-assertive" ng-disabled="!user.curp" ng-click="login()">Aceptar</div>
+  <div class="spacer" style="height: 10px;"></div>
+
+            <a href="https://consultas.curp.gob.mx/CurpSP/" class="button button-positive button-clear button-block ">No me acuerdo de mi CURP</a>
+</div>    
+
+    
+  </ion-content>
+
+</ion-view>
+

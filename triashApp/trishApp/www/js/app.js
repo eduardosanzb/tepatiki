@@ -3,8 +3,8 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
-
+angular.module('triash', ['ionic', 'ngCordova', 'triash.controllers', 'triash.services', 'triash.filters','firebase', 'ionic-datepicker','progressButton'])
+.constant('FirebaseUrl', "https://tepatiki.firebaseio.com/")
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -21,4 +21,54 @@ angular.module('starter', ['ionic'])
       StatusBar.styleDefault();
     }
   });
+})
+
+.config(function($stateProvider, $ionicConfigProvider, $urlRouterProvider){
+  $ionicConfigProvider.backButton.text('').icon('ion-ios-arrow-thin-left');
+
+  $stateProvider
+
+  .state('login',{
+    url:'/login',
+    templateUrl:'templates/login.html',
+    controller:'LoginCtrl',
+    resolve:{
+    }
+  })
+
+  .state('home',{
+    url:'/home',
+    templateUrl:'templates/home.html',
+    controller:'HomeCtrl',
+    resolve:{
+
+    }
+  })
+  .state('register',{
+    url:'/register',
+    templateUrl:'templates/register.html',
+    controller:'RegisterCtrl',
+    resolve:{
+
+      
+    }
+  })
+  .state('checate',{
+    url:'/checate',
+    templateUrl:'templates/checate.html',
+    controller:'ChecateCtrl',
+    resolve:{
+      "currentAuth":function(Auth,$state){
+        Auth.$requireAuth().then(function(data){
+          console.log(data)
+        },function(error){
+          console.log(error);
+          $state.go('login')
+        })
+      }
+    }
+  })
+
+  $urlRouterProvider.otherwise('/home');
+
 })

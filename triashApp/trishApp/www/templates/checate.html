@@ -1,0 +1,64 @@
+<ion-view view-title="Title">
+<ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Inicio</h1>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <ion-slide-box class="padding" on-slide-changed="nextSlide()" show-pager="">
+      <ion-slide>
+          <h1>Paso 1/4</h1>
+          <h2>Colocate sobre la linea</h2>
+          <img style="height:500px; margin-right: auto; margin-left: auto; display: block"src="/img/line.jpg">
+          <div class="center">
+            <progress-button value="progress" in-progress="Cargando…" complete="Listo" ng-click="click()">Generate</a>
+          </div>
+
+
+      </ion-slide>
+        
+      <ion-slide >
+          <h1>Paso 2/4</h1>
+          <h2>Coloca tu dedo indice <br>
+              sobre la lectora con el led encendido
+              por 20 segs
+          </h2>
+          <img style="height:500px; margin-right: auto; margin-left: auto; display: block"src="/img/line.jpg">
+          <div class="center">
+            <progress-button value="progress" in-progress="Cargando…" complete="Listo" ng-click="click()">Generate</a>
+          </div>
+      </ion-slide>
+  
+      <ion-slide >
+          <h1>Paso 3/4</h1>
+          <h2>Coloca tu dedo indice <br>
+              sobre la lectora con el led encendido,
+              no lo quites hasta que te indiquemos</h2>
+          <img style="height:500px; margin-right: auto; margin-left: auto; display: block"src="/img/line.jpg">
+          <div class="center">
+            <progress-button value="progress" in-progress="Cargando…" complete="Listo" ng-click="click()">Generate</a>
+          </div>
+      </ion-slide>
+
+      <ion-slide >
+          <h1>Paso 4/4</h1>
+          <h2>Ahora el encargado en turno <br>
+              Te pedira que te coloques 3 bandas
+               
+              Si necesitas ayuda, <br>el con mucho gusto te ayudara.</h2>
+          <img style="height:460px; margin-right: auto; margin-left: auto; display: block"src="/img/line.jpg">
+          <div class="center">
+            <progress-button value="progress" in-progress="Cargando…" complete="Listo" ng-click="click()">Generate</a>
+          </div>
+      </ion-slide>
+      <ion-slide >
+          <h1>Gracias</h1>
+          <h2>Estos son tus resultados</h2>
+          <div class="list">
+            <div class="item card">Altura: {{user.height}}</div>
+            <div class="item card">Temperatura: {{user.temperature}}</div>
+            <div class="item card">Pulso: {{user.pulse}}</div>
+            <div class="item card">ECG: {{user.ecg}}</div>
+          </div>
+          <div class="button button-assertive" ng-click="close()">Listo</div>
+      </ion-slide>
+    </ion-slide-box>
+</ion-view>

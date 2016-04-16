@@ -1,0 +1,16 @@
+<ion-modal-view>
+  <ion-header-bar align-title="left" class="bar-positive">
+    <div class="buttons">
+      <button class="button" ng-click="statesModal.hide()">Cerrar</button>
+    </div>
+    <h1 class="title">Municipios</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list card" ng-repeat="municipio in municipios">
+      <a ng-click="municipioSelected(municipio)" class="item item-icon-left">
+        <i class="icon ion-home"></i>
+        {{municipio.nombre}}
+      </a>
+    </div>
+  </ion-content>
+</ion-modal-view>
