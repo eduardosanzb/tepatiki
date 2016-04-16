@@ -1,7 +1,7 @@
 angular.module('triash.controllers')
 .controller('LoginCtrl',LoginCtrl);
-LoginCtrl.$inject = ["$rootScope", "$scope", "$state", "$ionicModal", "$ionicLoading", "$localStorage", "ionicDatePicker","Auth"];
-function LoginCtrl ($rootScope, $scope, $state, $ionicModal, $ionicLoading, $localStorage, ionicDatePicker,Auth){
+LoginCtrl.$inject = ["$rootScope", "$scope", "$state", "$ionicModal", "$ionicLoading", "$localStorage", "ionicDatePicker","Auth","Users"];
+function LoginCtrl ($rootScope, $scope, $state, $ionicModal, $ionicLoading, $localStorage, ionicDatePicker,Auth, Users){
 $scope.user = {}
 $scope.login = function(){
   $ionicLoading.show({
@@ -15,10 +15,15 @@ $scope.login = function(){
   Auth.$authWithPassword(credential).then(function(data){
     console.log("logged with: ")
     console.log(data)
-    var user = {
-      uid: data.uid,
-    }
-    $localStorage.setObject('userProfile',user);
+    Users.get(data.uid).$loaded().then(function(uData){
+      var user = {
+        name:uData.name,
+        uid:uData.$id
+      }
+      $localStorage.setObject('userProfile',user);
+    })
+  
+    
     $state.go('checate')
     $ionicLoading.hide();
   },function(error){
