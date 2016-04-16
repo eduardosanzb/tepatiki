@@ -1,4 +1,5 @@
 {
+    "tepatikitapp":{
     "users":{
         "user_id_01":{
             "name":false,
@@ -11,6 +12,10 @@
             "curp":false,
             "logs":{
                 "log_id":true
+            },
+            "allergies":{
+                "ale1":true,
+                "ale2":true
             }
         }  
     },
@@ -27,12 +32,44 @@
         }
     },
 
-    "weights":{
-        "log_weight_id":{
-            "value":false,
-            "user_id":true
+    "consultations":{
+        "consult_id":{
+            "date":false,
+            "user_id":true,
+            "prescription":{
+                "meds":{
+                    "med_1":true
+                }
+            },
+            "diagnosis":{
+                "description":false
+            }
         }
     }
 
 
+},
+
+"tisitapp":{
+    "users":{
+        "name":false,
+        "surname":false,
+        "birthdae":false,
+        "professionalNumber":false,
+        "contact":{
+            "number":false,
+            "email":false,
+            "adress":false
+        },
+        "location":{
+            "state":false,
+            "city":false,
+            "medicalCenter":false
+        },
+        "status":false,
+        "privileges":false
+    }
+},
+
+"tepacholistapp":{}
 }
