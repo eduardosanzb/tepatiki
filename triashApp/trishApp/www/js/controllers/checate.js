@@ -6,6 +6,7 @@ function ChecateCtrl($rootScope, $scope, $state, $ionicModal, $ionicLoading, $lo
     $scope.progress = 0;
     $scope.macAddress = "00:06:66:6A:52:49";
     $scope.user = {}
+    $scope.user.name = $localStorage.getObject('userProfile').name;
     $scope.user.ecg = [];
 
     
