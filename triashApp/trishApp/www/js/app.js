@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('triash', ['ionic', 'ngCordova', 'triash.controllers', 'triash.services', 'triash.filters','firebase', 'ionic-datepicker','progressButton'])
+angular.module('triash', ['ionic', 'ngCordova', 'triash.controllers', 'triash.services','triash.bluetooth', 'triash.filters','firebase', 'ionic-datepicker','progressButton','nvd3'])
 .constant('FirebaseUrl', "https://tepatiki.firebaseio.com/")
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -41,7 +41,6 @@ angular.module('triash', ['ionic', 'ngCordova', 'triash.controllers', 'triash.se
     templateUrl:'templates/home.html',
     controller:'HomeCtrl',
     resolve:{
-
     }
   })
   .state('register',{

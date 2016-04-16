@@ -32,7 +32,14 @@ function Users (FirebaseUrl,$firebaseArray, $firebaseObject){
 }
 
 Logs.$inject = ["FirebaseUrl","$firebaseArray", "$firebaseObject"];
-function Logs (FirebaseUrl,$firebaseArray, $firebaseObject){}
+function Logs (FirebaseUrl,$firebaseArray, $firebaseObject){
+    var ref = new Firebase(FirebaseUrl + "tepatikitapp/logs/");
+    return {
+        ref: function(){
+            return ref;
+        }
+    }
+}
   
 
 Consultations.$inject = ["FirebaseUrl","$firebaseArray", "$firebaseObject"];
