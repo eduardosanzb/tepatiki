@@ -1,0 +1,27 @@
+<ion-view view-title="Acceso">
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Login</h1>
+  </ion-header-bar>
+
+  <ion-content>
+  
+  <div class="list">
+
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Usuario</span>
+      <input type="text" placeholder="Usuario" ng-model="user.email">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Contraseña</span>
+      <input type="text" placeholder="Contraseña" ng-model="user.password">
+    </label>
+    <div class="button button-assertive" ng-disabled="(!user.email && !user.password)" ng-click="login()">Aceptar</div>
+
+            
+</div>    
+
+    
+  </ion-content>
+
+</ion-view>
+
