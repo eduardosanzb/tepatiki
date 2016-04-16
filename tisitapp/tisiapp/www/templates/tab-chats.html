@@ -1,16 +1,22 @@
-<ion-view view-title="Chats">
+<ion-view view-title="Consultas">
   <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+    
+      <div ng-show="paciente" >
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
+      <div class="row">
+        <img class="col col-25 profile-pic" data-ng-src="data:image/png;base64,{{user.picture}}" ng-show="user.picture" >
+        <div class="col col-75">
+          <div class="row"><h2>{{paciente[0].name}} {{paciente[0].pSurname}} {{paciente[0].mSurname}}</h2></div>
+          <div class="row"><h3>Estado: {{paciente[0].state}}    Municipio: {{paciente[0].municipio}}</h3></div>
+        </div>
+      </div>
+      <div class="list " ng-repeat="val in consultas" >
+          <div class="item" ng-click="openModal(log)">
+              {{val}}
+          </div>
+      </div>
+    </div>
+    <button class="button" ng-click="createConsult()">Crear consulta</button>
+        
   </ion-content>
 </ion-view>

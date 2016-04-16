@@ -6,7 +6,7 @@ function ChecateCtrl($rootScope, $scope, $state, $ionicModal, $ionicLoading, $lo
     $scope.progress = 0;
     $scope.macAddress = "00:06:66:6A:52:49";
     $scope.user = {}
-    $scope.user.name = $localStorage.getObject('userProfile').name;
+    
     $scope.user.ecg = [];
 
     
@@ -14,6 +14,7 @@ function ChecateCtrl($rootScope, $scope, $state, $ionicModal, $ionicLoading, $lo
 
     $ionicSlideBoxDelegate.enableSlide(true);
     $scope.click = function(char, step) {
+        $scope.user.name = $localStorage.getObject('userProfile').name;
         $ionicLoading.show();
         $scope.step = step;
         $scope.getMeasure(char)
@@ -23,10 +24,12 @@ function ChecateCtrl($rootScope, $scope, $state, $ionicModal, $ionicLoading, $lo
       var newLog = Logs.ref().push();
       var logID = newLog.key();
       var log = {
+        user:$localStorage.getObject('userProfile').uid,
         height:$scope.user.height,
         temperature:$scope.user.temperature,
         pulse:$scope.user.pulse,
-        ecg:$scope.user.ecg
+        ecg:$scope.user.ecg,
+        date: new Date().getTime()
       }
       Logs.ref().child(logID).set(log);
       Users.ref().child($localStorage.getObject('userProfile').uid).child("logs").child(logID).set(true)

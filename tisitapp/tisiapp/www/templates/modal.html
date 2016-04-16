@@ -1,0 +1,24 @@
+<ion-modal-view>
+  <ion-header-bar align-title="left" class="bar-positive">
+    <div class="buttons">
+      <button class="button" ng-click="modal.hide()">Cerrar</button>
+    </div>
+    <h1 class="title">Registro del dia  {{detailed.date | date:'mediumDate'}}</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="row">
+          <div class="row">{{paciente[0].name}} {{paciente[0].pSurname}} {{paciente[0].mSurname}}</div>
+          <div class="row">Estado: {{paciente[0].state}}    Municipio: {{paciente[0].municipio}}</div>
+          <div class="row">Ultima Altura: {{height}} cm </div>
+    </div>
+
+    <div class="list row">
+        <div class="item">Altura: {{detailed.height}}cm</div>
+        <div class="item">Pulso Cardiaco: {{detailed.height}}bpm</div>
+        <div class="item">Temperatura: {{detailed.height}}c</div>
+        
+    </div>
+
+
+  </ion-content>
+</ion-modal-view>

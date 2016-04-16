@@ -4,7 +4,7 @@ angular.module('starter.services',[])
 .factory('Users',Users)
 .factory('Doctores', Doctores)
 .factory('Logs',Logs)
-.factory('Consultations',Consultations)
+.factory('Consultas',Consultas)
 .factory('States',States)
 .factory('$localStorage', $localStorage);
 
@@ -32,6 +32,11 @@ function Users (FirebaseUrl,$firebaseArray, $firebaseObject){
         locate: function(curp){
             return $firebaseArray(ref.orderByChild('curp').equalTo(curp))
             
+        },
+        logs: function(id){
+            var newRef = new Firebase(FirebaseUrl);
+            return $firebaseArray(newRef.child("tepatikitapp").child("logs").orderByChild("users")      ) 
+            //console.log($firebaseArray(    newRef.child("tepatikitapp/logs/").orderByChild(  "users/"+id   ).equalTo(true)                       ))
         }
     }
 }
@@ -60,8 +65,19 @@ function Logs (FirebaseUrl,$firebaseArray, $firebaseObject){
 }
   
 
-Consultations.$inject = ["FirebaseUrl","$firebaseArray", "$firebaseObject"];
-function Consultations (FirebaseUrl,$firebaseArray, $firebaseObject){ }
+Consultas.$inject = ["FirebaseUrl","$firebaseArray", "$firebaseObject"];
+function Consultas (FirebaseUrl,$firebaseArray, $firebaseObject){
+    var ref = new Firebase(FirebaseUrl + "tisitapp/Consultas");
+    return {
+        ref:function(){
+            return ref;
+        },
+        getByUser:function(id){
+            return $firebaseArray(  ref.orderByChild( "tepatikitapp/users/" + id + "consultas").equalTo(true)  );
+        }
+    }
+
+ }
 
 
 

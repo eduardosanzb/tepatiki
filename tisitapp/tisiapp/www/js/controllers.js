@@ -1,10 +1,14 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($rootScope, $scope, Users, $ionicPopup, $state) {
+.controller('DashCtrl', function($rootScope, $scope, Users, $ionicPopup, $state, $localStorage, $ionicModal) {
   $scope.user = {}
+  $scope.logs = []
+
   $scope.locateUser = function(){
 
     Users.locate($scope.user.curp).$loaded().then(function(data){
+      console.log(data)
+      $scope.pid = data[0].$id
       if(data.length == 0){
          $ionicPopup.alert({
                 title: 'Paciente no Existe',
@@ -13,19 +17,60 @@ angular.module('starter.controllers', [])
               $scope.user = {}
             });
       } else{
-        console.log(data)
+        $localStorage.set('paciente',data[0].curp)
         $scope.paciente = data;
-      }
+        $scope.paciente.logs = [];
+        Users.logs(data[0].$id).$loaded().then(function(data){
+          angular.forEach(data, function(log){
+            console.log(log.user)
+            if(log.user == $scope.pid){
+              console.log(log.height)
+              $scope.height = log.height;
+              $scope.logs.push(log)
+            }
 
+          })
+        })
+        
+        
+        
+      }
 
     });
   }
-
-
   /*MODAL STUFF*/
+  $scope.openModal = function(log){
+    $scope.detailed = log;
+    $scope.modal.show()
+  }
+
+  $ionicModal.fromTemplateUrl('templates/modal.html',{
+    scope:$scope,
+    animation:'slide-in-up'
+  }).then(function(modal){
+    $scope.modal = modal;
+  })
 })
 
-.controller('ChatsCtrl', function($scope) {
+.controller('ChatsCtrl', function($scope, $rootScope,$localStorage, Users, Logs, pachi, Consultas) {
+  pachi.$loaded().then(function(data){
+    console.log(data)
+    $scope.paciente = data;
+  })
+
+
+  $scope.createConsult = function(){
+    var consulta = {
+      folio:$scope.user.folio,
+      date:new Date().getTIme(),
+      diagnostico:$scope.user.diagnostico,
+      user:$localStorage.get('paciente')
+    }
+    var newLog = Consultas.ref().push();
+    var logID = newLog.key();
+    Consultas.ref().child(logID).set(consulta);
+    Users.get(consulta.user).child(logID).set(true);
+  }
   
 })
 

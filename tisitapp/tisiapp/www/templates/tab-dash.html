@@ -10,8 +10,21 @@
       <div class="button button-assertive" ng-disabled="(!user.curp)" ng-click="locateUser()">Aceptar</div>
     </div>
   <!-- ************************** USER DATA ***************************** -->
-    <div>
-        {{paciente}}
+    <div ng-show="paciente" >
+
+      <div class="row">
+        <img class="col col-25 profile-pic" data-ng-src="data:image/png;base64,{{user.picture}}" ng-show="user.picture" >
+        <div class="col col-75">
+          <div class="row"><h2>{{paciente[0].name}} {{paciente[0].pSurname}} {{paciente[0].mSurname}}</h2></div>
+          <div class="row"><h3>Estado: {{paciente[0].state}}    Municipio: {{paciente[0].municipio}}</h3></div>
+          <div class="row"><h3>Ultima Altura: {{height}} cm </h3></div>
+        </div>
+      </div>
+      <div class="list " ng-repeat="log in logs" >
+          <div class="item" ng-click="openModal(log)">
+              Medidas del {{log.date | date:'mediumDate'}}
+          </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>
