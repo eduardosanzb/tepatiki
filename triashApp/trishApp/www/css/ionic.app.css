@@ -26,6 +26,7 @@ $dark:                            #444 !default;
   used under CC BY http://creativecommons.org/licenses/by/4.0/
   Modified icons to fit ionicon’s grid from original.
 */
+@import url(https://fonts.googleapis.com/css?family=Asap:400,400italic,700,700italic);
 @font-face {
   font-family: "Ionicons";
   src: url("../lib/ionic/fonts/ionicons.eot?v=2.0.1");
@@ -9731,6 +9732,9 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+* {
+  font-family: 'Asap', sans-serif; }
+
 .home-cover {
   background-image: url("../img/cover1.png");
   background-size: cover;
@@ -9768,6 +9772,10 @@ a.button {
   background-color: #fff;
   background-size: cover;
   background-repeat: no-repeat; }
+
+.button-main {
+  font-weight: 700;
+  color: #fff !important; }
 
 .disabled {
   cursor: not-allowed;
