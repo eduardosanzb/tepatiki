@@ -23,6 +23,12 @@ $calm: #f9984a !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+@import url(https://fonts.googleapis.com/css?family=Asap:400,400italic,700,700italic);
+
+* {
+font-family: 'Asap', sans-serif;
+}
+
 .home-cover {
     background-image: url('../img/cover1.png');
     background-size: cover;
@@ -62,8 +68,14 @@ margin-top: 50px;
     width: 100%;
     height: 300px;
     background-color: #fff;
-     background-size: cover;
+    background-size: cover;
     background-repeat: no-repeat;
+    
+}
+
+.button-main{
+    font-weight: 700;
+    color: #fff !important;
 }
 .disabled {
     cursor: not-allowed;
